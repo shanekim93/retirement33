@@ -17,7 +17,7 @@ divs = bs.find_all(class_="pbh-ban")
 
 Matchlist = []
 for word in divs:
-    if search in word :
+    if search in word.text :
         Matchlist.append(word)
 
 print("{}는 {}번 밴 당했습니다.".format(search, len(Matchlist)))
@@ -31,7 +31,7 @@ divs_red = bs.find_all(class_="pbh-red")
 Matchlist_red = []
 
 for word in divs_red:
-    if search in word :
+    if search in str(word) :
         Matchlist_red.append(word)
 
 #블루팀 픽(밴 포함)
@@ -41,7 +41,7 @@ divs_blue = bs.find_all(class_="pbh-blue")
 Matchlist_blue = []
 
 for word in divs_blue:
-    if search in word :
+    if search in word.text :
         Matchlist_blue.append(word)
 
 #블루팀 픽, 레드팀 픽리스트 합치기(밴 제외)
@@ -49,7 +49,7 @@ for word in divs_blue:
 Matchlist_all = Matchlist_red + Matchlist_blue
 
 for word in Matchlist :
-    if word in Matchlist_all:
+    if word in Matchlist:
         Matchlist_all.remove(word)
 
 print("{}는 {}번 픽됐습니다.".format(search, len(Matchlist_all)))
